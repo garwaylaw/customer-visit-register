@@ -12,7 +12,7 @@
 
 ## 安装与调用
 
-审核文件后，将 `skills/customer-visit-register/` 整个目录复制到助手的技能目录；Codex默认目录为 `~/.codex/skills/`。这是手动安装说明，本仓库不会执行安装或授权操作。
+审核文件后，将 `skills/customer-visit-register/` 整个目录放入所用 AI 工具支持的技能或规则目录，具体位置和调用方式以该工具的文档为准。若工具不支持技能目录，也可把 `SKILL.md` 及其引用文件作为工作流说明导入。这是手动安装说明，本仓库不会执行安装或授权操作。
 
 调用示例（虚构）：
 
@@ -32,7 +32,6 @@
 - `skills/customer-visit-register/SKILL.md`：入口。
 - 技能内 `references/`：14类字段、平台路由、客户匹配、确认提交、配置示例及22个虚构评估场景。
 - `references/keyword-corrections.md`：内置误词候选、Obsidian知识库规范词及持续积累规则。
-- 技能内 `agents/openai.yaml`：Codex展示信息。
 - `tools/validate_package.py`：Python标准库离线检查，不会安装依赖、联网或写入业务表。
 
 运行 `python3 tools/validate_package.py` 检查文件与引用，再按 `references/evaluation.md` 验证实际行为。结构校验不能证明在线写入可用。
