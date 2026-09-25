@@ -1,0 +1,41 @@
+{
+  "profile_version": 1,
+  "example_only": true,
+  "target": {
+    "platform": "choose-at-runtime",
+    "resource_id": "YOUR_RESOURCE_ID",
+    "table_id": "YOUR_TABLE_ID"
+  },
+  "timezone": null,
+  "schema_fingerprint": null,
+  "capabilities": {
+    "full_table_search": "unknown",
+    "create": "unknown",
+    "update": "unknown",
+    "readback": "unknown",
+    "conditional_write": "unknown"
+  },
+  "bindings": [
+    {
+      "field_id": "YOUR_NAME_FIELD_ID",
+      "actual_name": "示例：门店名称",
+      "role": "customer_name",
+      "strategy": "fill_or_confirm_change",
+      "mapping_confirmed": false
+    },
+    {
+      "field_id": "YOUR_HISTORY_FIELD_ID",
+      "actual_name": "示例：跟进纪要",
+      "role": "visit_history",
+      "strategy": "append_only",
+      "mapping_confirmed": false
+    }
+  ],
+  "confirmed_aliases": [],
+  "filler_identity": {
+    "display_name": "YOUR_NAME_AS_SHOWN_IN_THE_TABLE",
+    "platform_user_id": null,
+    "confirmed": false
+  },
+  "note": "仅示例；运行时按真实表结构确认。此配置不授予业务写入权限。"
+}

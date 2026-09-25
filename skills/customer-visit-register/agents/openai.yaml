@@ -1,0 +1,4 @@
+interface:
+  display_name: "客户拜访登记助手"
+  short_description: "识别拜访转写，适配不同表格字段，匹配客户并在确认后新增或更新记录"
+  default_prompt: "使用 $customer-visit-register 识别这份客户拜访转写，匹配目标表格中的客户并生成待确认的填写方案，确认后再写入。"
