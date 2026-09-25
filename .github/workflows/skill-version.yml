@@ -1,0 +1,33 @@
+name: Update skill version
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  bump-version:
+    if: ${{ !contains(github.event.head_commit.message, '[skip version]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select and update semantic version
+        id: version
+        env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          version=$(python3 tools/bump_version.py --level auto --message "$COMMIT_MESSAGE")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Commit version update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add skills/customer-visit-register/SKILL.md
+          git commit -m "chore: bump skill version to ${{ steps.version.outputs.version }} [skip version]"
+          git push
